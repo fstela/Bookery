@@ -9,7 +9,7 @@
     />
   </div>
   <div
-    class="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-5 gap-10 xl:gap-16 p-8"
+    class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-10 xl:gap-16 p-8"
   >
     <div
       v-for="book in books"
@@ -19,13 +19,34 @@
       <img
         src="../assets/book.png"
         alt="book"
-        class="rounded-t-xl object-contain w-full h-48 "
+        class="rounded-t-xl object-contain w-full h-48"
       />
-      <h3 class="p-3 pt-5 font-semibold">{{ book.title }}</h3>
-      <h5>{{ book.author }}</h5>
-      <h5>{{ book.category }}</h5>
-      <div>
-        <router-link to="/cart">Add to cart</router-link>
+      <h3 class="p-3 pt-5 pb-0 font-semibold bookTitle">{{ book.title }}</h3>
+      <h5 class="pl-10 pb-5 flex justify-left text-stone-400">
+        by {{ book.author }}
+      </h5>
+      <div class="flex justify-between px-5 py-0 pb-1 position-fixed">
+        <h5 class="text-amber-400 py-2 px-4">${{ book.price }}</h5>
+        <router-link to="/cart">
+          <button
+            class="hover:bg-transparent bg-red-500 hover:text-red-700 font-semibold text-white py-2 px-4 border hover:border-red-500 border-transparent rounded"
+          >
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="22"
+              height="22"
+              fill="currentColor"
+              class="bi bi-cart2"
+              viewBox="0 0 16 16"
+              id="IconChangeColor"
+            >
+              <path
+                d="M0 2.5A.5.5 0 0 1 .5 2H2a.5.5 0 0 1 .485.379L2.89 4H14.5a.5.5 0 0 1 .485.621l-1.5 6A.5.5 0 0 1 13 11H4a.5.5 0 0 1-.485-.379L1.61 3H.5a.5.5 0 0 1-.5-.5zM3.14 5l1.25 5h8.22l1.25-5H3.14zM5 13a1 1 0 1 0 0 2 1 1 0 0 0 0-2zm-2 1a2 2 0 1 1 4 0 2 2 0 0 1-4 0zm9-1a1 1 0 1 0 0 2 1 1 0 0 0 0-2zm-2 1a2 2 0 1 1 4 0 2 2 0 0 1-4 0z"
+                id="mainIconPathAttribute"
+              ></path>
+            </svg>
+          </button>
+        </router-link>
       </div>
     </div>
   </div>
@@ -34,10 +55,14 @@
 <script setup>
 import { computed } from "vue";
 import store from "../store";
-import { randBook } from "@ngneat/falso";
+import { randBook, randFloat } from "@ngneat/falso";
 import { ref } from "vue";
 
-let books = randBook({ length: 10 });
+
+let books = randBook({ length: 50 });
+books.forEach((book) => {
+  book["price"] = randFloat({ min: 10, max: 120, fraction: 2 });
+});
 const keyword = ref("");
 store.state.searchedBooks = books;
 books = computed(() => store.state.searchedBooks);
@@ -48,3 +73,12 @@ function searchBooks() {
   console.log(books);
 }
 </script>
+<style>
+@import url("https://fonts.googleapis.com/css?family=Libre+Baskerville");
+
+.bookTitle {
+  font-family: "Libre Baskerville", serif;
+  font-weight: 500;
+  font-style: italic;
+}
+</style>

@@ -1,6 +1,6 @@
 <template>
     <div class="flex flex-column p-8">
-      Book List
+      Cart
     </div>
   </template>
   
