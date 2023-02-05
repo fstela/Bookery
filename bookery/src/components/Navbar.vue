@@ -9,24 +9,18 @@
       </router-link>
     </div>
 
-    <div class="md:hap-10 lg:gap-20 inline-flex">
-      <router-link
-        :to="{ name: 'categories' }"
-        class="px-2 pr-20 h-full text-l transition-colors text-gray-700 hover:text-gray-400 menuItemsFont"
-      >
-        Categories
-      </router-link>
+    <div class="md:hap-10 lg:gap-7 inline-flex">
+      
       <router-link
         to="/"
         class="px-2 pr-5 h-full text-l transition-colors text-gray-700 hover:text-gray-400 menuItemsFont"
       >
         Login
       </router-link>
-    </div>
-    <div>
+    
       <router-link
         to="/cart"
-        class="block px-2 pr-7 sm:pr-15 md:pr-10 h-full text-l transition-colors hover:text-gray-400 menuItemsFont"
+        class="block px-2 pr-7 sm:pr-15 md:pr-10 h-full text-l transition-colors text-gray-700 hover:text-gray-400 menuItemsFont"
       >
         Go
         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512">

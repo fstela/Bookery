@@ -8,6 +8,9 @@
       @change="searchBooks"
     />
   </div>
+  <div>
+    <VueMultiselect></VueMultiselect>
+  </div>
   <div
     class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-10 xl:gap-16 p-8"
   >
@@ -25,7 +28,10 @@
       <h5 class="pl-10 pb-5 flex justify-left text-stone-400">
         by {{ book.author }}
       </h5>
-      <div class="flex justify-between px-5 py-0 pb-1 position-fixed">
+      <h5 class="pl-10 pb-5 flex justify-left text-stone-400">
+        by {{ book.category }}
+      </h5>
+      <div class="flex justify-between px-5 py-0 pb-1 ">
         <h5 class="text-amber-400 py-2 px-4">${{ book.price }}</h5>
         <router-link to="/cart">
           <button
@@ -57,7 +63,7 @@ import { computed } from "vue";
 import store from "../store";
 import { randBook, randFloat } from "@ngneat/falso";
 import { ref } from "vue";
-
+import VueMultiselect from "../components/FilterCategory.vue";
 
 let books = randBook({ length: 50 });
 books.forEach((book) => {
@@ -73,6 +79,7 @@ function searchBooks() {
   console.log(books);
 }
 </script>
+
 <style>
 @import url("https://fonts.googleapis.com/css?family=Libre+Baskerville");
 

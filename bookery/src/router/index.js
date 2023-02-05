@@ -1,6 +1,5 @@
 import { createRouter, createWebHistory } from "vue-router";
 import Home from "../pages/Home.vue";
-import Categories from "../pages/Categories.vue";
 import Cart from "../pages/Cart.vue";
 import Login from "../pages/Login.vue";
 import DefaultLayout from "../components/DefaultLayout.vue";
@@ -16,11 +15,6 @@ const routes = [
         component: Home,
       },
       {
-        path: "/categories",
-        name: "categories",
-        component: Categories,
-      },
-      {
         path: "/login",
         name: "login",
         component: Login,
@@ -30,14 +24,16 @@ const routes = [
         name: "cart",
         component: Cart,
       },
+      {
+        path: "/:notFound(.*)",
+        component: null,
+      },
     ],
   },
   {
     path: "/user",
     component: UserLayout,
-    children:[
-      
-    ]
+    children: [],
   },
 ];
 
