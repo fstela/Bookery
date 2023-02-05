@@ -1,0 +1,12 @@
+{
+  "compilerOptions": {
+    "target": "EsNext",
+    "allowJs": true,
+    "esModuleInterop": false,
+    "isolatedModules": true,
+    "baseUrl": ".",
+    "outDir": "build",
+    "strict": true
+  },
+  "exclude": ["node_modules"]
+}

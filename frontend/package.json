@@ -1,0 +1,32 @@
+{
+  "name": "@bookery/frontend",
+  "private": true,
+  "version": "0.0.0",
+  "type": "module",
+  "scripts": {
+    "dev": "vite --port=3000",
+    "build": "vite build",
+    "preview": "vite preview"
+  },
+  "dependencies": {
+    "@bookery/shared": "^1.0.0",
+    "@ngneat/falso": "^6.4.0",
+    "axios": "^1.3.2",
+    "firebase": "^9.17.1",
+    "pinia": "^2.0.30",
+    "vue": "^3.2.45",
+    "vue-multiselect": "^3.0.0-beta.1",
+    "vue-router": "^4.0.13",
+    "vuex": "^4.1.0"
+  },
+  "devDependencies": {
+    "@tailwindcss/forms": "^0.5.3",
+    "@vitejs/plugin-vue": "^4.0.0",
+    "autoprefixer": "^10.4.13",
+    "google-fonts-webpack-plugin": "^0.4.4",
+    "postcss": "^8.4.21",
+    "tailwindcss": "^3.2.4",
+    "vite": "^4.0.0",
+    "vue-svg-loader": "^0.16.0"
+  }
+}
