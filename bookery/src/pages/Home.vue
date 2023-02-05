@@ -17,21 +17,18 @@
     <div
       v-for="book in books"
       :key="book.title"
-      class="bg-gray-100 shadow rounded-xl"
+      class="bg-gray-100 shadow rounded-xl flex flex-col"
     >
-      <img
-        src="../assets/book.png"
-        alt="book"
-        class="rounded-t-xl object-contain w-full h-48"
-      />
-      <h3 class="p-3 pt-5 pb-0 font-semibold bookTitle">{{ book.title }}</h3>
-      <h5 class="pl-10 pb-5 flex justify-left text-stone-400">
-        by {{ book.author }}
-      </h5>
-      <h5 class="pl-10 pb-5 flex justify-left text-stone-400">
-        by {{ book.category }}
-      </h5>
-      <div class="flex justify-between px-5 py-0 pb-1 ">
+      <div class="flex flex-col grow justify-center">
+        <img
+          src="../assets/book.png"
+          alt="book"
+          class="rounded-t-xl object-contain w-full h-48"
+        />
+        <h3 class="p-3 pt-5 pb-0 font-semibold bookTitle text-center">{{ book.title }}</h3>
+        <h5 class="pb-5 text-stone-400 text-center">{{ book.author }}</h5>
+      </div>
+      <div class="flex justify-between px-5 py-0 pb-1">
         <h5 class="text-amber-400 py-2 px-4">${{ book.price }}</h5>
         <router-link to="/cart">
           <button
