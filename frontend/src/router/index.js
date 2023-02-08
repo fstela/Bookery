@@ -6,6 +6,7 @@ import Home from "../pages/Home.vue";
 import Login from "../pages/Login.vue";
 import Register from "../pages/Register.vue";
 import Order from "../pages/Order.vue"
+import MyOrders from "../pages/MyOrders.vue"
 const routes = [
   {
     path: "/",
@@ -35,6 +36,11 @@ const routes = [
         path: "/order",
         name: "order",
         component: Order,
+      },
+      {
+        path: "/my-orders",
+        name: "my-orders",
+        component: MyOrders
       },
       {
         path: "/:notFound(.*)",

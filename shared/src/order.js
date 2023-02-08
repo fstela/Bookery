@@ -16,3 +16,9 @@ export const createOrderSchema = Joi.object({
     .min(1),
   delivery: deliverySchema,
 });
+
+export const canBeModified = (date) => {
+  const compareResult =
+    new Date(new Date().setHours(new Date().getHours() + 5)) > date;
+  return compareResult != 1;
+};

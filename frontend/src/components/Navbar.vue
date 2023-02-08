@@ -27,7 +27,7 @@
       <p v-if="isLogged" @click="logout" class="cursor-pointer px-2 pr-3 h-full text-l transition-colors text-gray-700 hover:text-gray-400 font-semibold">Logout</p>
       <router-link
         v-if="isLogged"
-        to="/"
+        to="/my-orders"
         class="px-2 pr-3 h-full text-l transition-colors text-gray-700 hover:text-gray-400 font-semibold"
       >
         My orders

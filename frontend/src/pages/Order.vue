@@ -1,7 +1,9 @@
 <template>
   <div class="mt-10 sm:mt-0">
-    <div class="md:grid md:grid-cols-4 md:gap-6 mt-10">
-      <div class="md:col-span-1 flex justify-center"></div>
+    <h1 class="text-center pt-5 sm:text-xl lg:text-2xl font-medium">
+      Fill order details
+    </h1>
+    <div class="mt-10 flex flex-col max-w-2xl mx-auto">
       <div v-if="!isOrderCompleted" class="mt-5 md:col-span-2 md:mt-0">
         <div class="overflow-hidden shadow sm:rounded-md">
           <div class="bg-white px-4 py-5 sm:p-6">
@@ -85,10 +87,18 @@
                   class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm"
                 />
               </div>
+              <div class="col-span-6">
+                <p class="text-red-500">{{ errMessage }}</p>
+              </div>
             </div>
           </div>
-          <div class="bg-gray-50 px-4 py-3 text-right sm:px-6">
-            <p class="text-red-500">{{ errMessage }}</p>
+          <div></div>
+          <div
+            class="bg-gray-50 px-4 py-3 text-right sm:px-6 flex justify-between items-center"
+          >
+            <p class="text-blue-500">
+              Total: {{ formatPrice(cart.totalPrice) }}
+            </p>
             <button
               type="button"
               @click="order"
@@ -110,12 +120,13 @@
 </template>
 
 <script setup>
+import { order as orderValidation } from "@bookery/shared";
+import { getAuth } from "firebase/auth";
 import { onMounted, ref } from "vue";
 import { useRouter } from "vue-router";
-import { getAuth } from "firebase/auth";
-import { order as orderValidation } from "@bookery/shared";
-import { useCartStore } from "../store/cart";
 import { ProtectedApi } from "../service/api";
+import { useCartStore } from "../store/cart";
+import { formatPrice } from "../utils/price";
 const cart = useCartStore();
 const router = useRouter();
 const formData = ref({
