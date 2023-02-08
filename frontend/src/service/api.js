@@ -24,11 +24,7 @@ export class ProtectedApi {
   };
 
   updateOrderDelivery = (orderId, content) => {
-    const data = order.deliverySchema(content);
-    if (data.error) {
-      throw new Exception("Invalid data");
-    }
-    return this.#client.put(`/order/${orderId}`, data.value);
+    return this.#client.put(`/order/${orderId}`, content);
   };
 
   cancelOrder = (orderId) => {
@@ -36,12 +32,7 @@ export class ProtectedApi {
   };
 
   placeOrder = (content) => {
-    const data = order.createOrderSchema(content);
-    if (data.error) {
-      throw new Exception("Invalid data");
-    }
-
-    return this.#client.post("/order", data.value);
+    return this.#client.post("/order", content);
   };
 }
 

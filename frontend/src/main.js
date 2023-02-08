@@ -4,7 +4,6 @@ import { createApp, watch } from "vue";
 import App from "./App.vue";
 import { config } from "./config";
 import router from "./router";
-
 import "./style.css";
 
 initializeApp(config.firebase);

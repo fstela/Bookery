@@ -50,14 +50,15 @@ export const useCartStore = defineStore("cart", {
     },
     removeItem(item) {
       let exisitngItem = this.items.find(
-        (existingItem) => existingItem.book.id === item.id
+        (existingItem) => existingItem.book.id === item.book.id
       );
       if (!exisitngItem) {
         return;
       }
       const itemsWithoutCurrentItem = this.items.filter(
-        (exisitngItem) => exisitngItem.book.id !== item.id
+        (exisitngItem) => exisitngItem.book.id !== item.book.id
       );
+      
       if (exisitngItem.quantity > 1) {
         exisitngItem.quantity = exisitngItem.quantity - 1;
         this.items = [...itemsWithoutCurrentItem, exisitngItem];
@@ -66,5 +67,8 @@ export const useCartStore = defineStore("cart", {
 
       this.items = itemsWithoutCurrentItem;
     },
+    clean() {
+      this.items= []
+    }
   },
 });

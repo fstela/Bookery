@@ -5,6 +5,7 @@ import Cart from "../pages/Cart.vue";
 import Home from "../pages/Home.vue";
 import Login from "../pages/Login.vue";
 import Register from "../pages/Register.vue";
+import Order from "../pages/Order.vue"
 const routes = [
   {
     path: "/",
@@ -29,6 +30,11 @@ const routes = [
         path: "/cart",
         name: "cart",
         component: Cart,
+      },
+      {
+        path: "/order",
+        name: "order",
+        component: Order,
       },
       {
         path: "/:notFound(.*)",

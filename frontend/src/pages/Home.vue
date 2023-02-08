@@ -33,27 +33,27 @@
           <h5 class="pb-5 text-stone-400 text-center">{{ book.category }}</h5>
         </div>
         <div class="flex justify-between px-5 py-0 pb-1">
-          <h5 class="text-amber-400 py-2 px-4">${{ book.price }}</h5>
-          
-            <button
-              class="hover:bg-transparent bg-red-500 hover:text-red-700 font-semibold text-white py-2 px-4 border hover:border-red-500 border-transparent rounded"
-              @click="addToCart(book)"
-              >
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                width="22"
-                height="22"
-                fill="currentColor"
-                class="bi bi-cart2"
-                viewBox="0 0 16 16"
-                id="IconChangeColor"
-              >
-                <path
-                  d="M0 2.5A.5.5 0 0 1 .5 2H2a.5.5 0 0 1 .485.379L2.89 4H14.5a.5.5 0 0 1 .485.621l-1.5 6A.5.5 0 0 1 13 11H4a.5.5 0 0 1-.485-.379L1.61 3H.5a.5.5 0 0 1-.5-.5zM3.14 5l1.25 5h8.22l1.25-5H3.14zM5 13a1 1 0 1 0 0 2 1 1 0 0 0 0-2zm-2 1a2 2 0 1 1 4 0 2 2 0 0 1-4 0zm9-1a1 1 0 1 0 0 2 1 1 0 0 0 0-2zm-2 1a2 2 0 1 1 4 0 2 2 0 0 1-4 0z"
-                  id="mainIconPathAttribute"
-                ></path>
-              </svg>
-            </button>
+          <h5 class="text-amber-400 py-2 md:px-4 sm:px-3">${{ book.price }}</h5>
+
+          <button
+            class="hover:bg-transparent bg-red-500 hover:text-red-700 font-semibold text-white py-2 px-2 md:px-4  border hover:border-red-500 border-transparent rounded"
+            @click="addToCart(book)"
+          >
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="22"
+              height="22"
+              fill="currentColor"
+              class="bi bi-cart2"
+              viewBox="0 0 16 16"
+              id="IconChangeColor"
+            >
+              <path
+                d="M0 2.5A.5.5 0 0 1 .5 2H2a.5.5 0 0 1 .485.379L2.89 4H14.5a.5.5 0 0 1 .485.621l-1.5 6A.5.5 0 0 1 13 11H4a.5.5 0 0 1-.485-.379L1.61 3H.5a.5.5 0 0 1-.5-.5zM3.14 5l1.25 5h8.22l1.25-5H3.14zM5 13a1 1 0 1 0 0 2 1 1 0 0 0 0-2zm-2 1a2 2 0 1 1 4 0 2 2 0 0 1-4 0zm9-1a1 1 0 1 0 0 2 1 1 0 0 0 0-2zm-2 1a2 2 0 1 1 4 0 2 2 0 0 1-4 0z"
+                id="mainIconPathAttribute"
+              ></path>
+            </svg>
+          </button>
         </div>
       </div>
     </div>
@@ -72,7 +72,7 @@ const filters = ref({
 
 const books = ref([]);
 const publicApi = new PublicApi();
-const cart = useCartStore()
+const cart = useCartStore();
 
 const filteredBooks = computed(() => {
   let items = books.value;
@@ -100,8 +100,8 @@ const categoryFilter = (values) => {
 };
 
 const addToCart = (item) => {
-  cart.addItem(item)
-}
+  cart.addItem(item);
+};
 </script>
 
 <style>
