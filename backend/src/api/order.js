@@ -3,9 +3,7 @@ import crypto from "crypto";
 import express from "express";
 import { db } from "../service/firebase.js";
 const router = express.Router();
-/**
- * Create a new order for current user
- */
+
 router.post("/", async (req, res) => {
   const data = order.createOrderSchema.validate(req.body);
   if (data.error !== undefined) {

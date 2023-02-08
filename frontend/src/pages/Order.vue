@@ -136,7 +136,7 @@ onMounted(() => {
   const auth = getAuth();
   auth.onAuthStateChanged((user) => {
     if (!user || user.isAnonymous) {
-      router.push("/");
+      router.push("/login");
       return;
     }
     protectedApiService.value = new ProtectedApi(user.accessToken);

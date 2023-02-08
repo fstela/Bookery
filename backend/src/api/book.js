@@ -2,9 +2,6 @@ import express from "express";
 import { db } from "../service/firebase.js";
 const router = express.Router();
 
-/**
- * List all books
- */
 router.get("/", async (_, res) => {
   const productsRef = db.collection("products");
   const snapshot = await productsRef.get();
