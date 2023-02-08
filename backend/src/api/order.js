@@ -94,7 +94,6 @@ const addProductDetailsToOrder = async (order) => {
   return {
     ...order,
     items: order.items.map((item) => {
-      console.log(item);
       return {
         ...item,
         title:
