@@ -15,9 +15,9 @@ router.post("/", async (req, res) => {
     });
     return;
   }
-  const productPrices = await getProductsDetails(data.value.items);
+  const itemsDetails = await getProductsDetails(data.value.items);
 
-  if (!productPrices) {
+  if (!itemsDetails) {
     res.status(400).json({
       error: "Invalid products",
     });
@@ -26,11 +26,19 @@ router.post("/", async (req, res) => {
 
   const orderRef = db.collection("orders").doc(crypto.randomUUID());
 
-  const itemsData = data.value.items.map((item) => ({
-    ...item,
-    price:
-      productPrices.find((product) => product.productId === item.id).price ?? 0,
-  }));
+  const itemsData = data.value.items.map((item) => {
+    const details = itemsDetails.find(
+      (product) => product.id === item.productId
+    );
+
+    return {
+      ...item,
+      ...{
+        price: details.price,
+        title: details.title,
+      },
+    };
+  });
 
   await orderRef.set({
     ...data.value,
@@ -73,36 +81,12 @@ router.get("/", async (req, res) => {
   const ordersRef = db.collection("orders").where("userId", "=", req.user.uid);
   const snapshot = await ordersRef.get();
   const orders = [];
-  const snapshotBucket = [];
   snapshot.forEach((order) => {
-    snapshotBucket.push(order);
+    orders.push({id: order.id, ...order.data()});
   });
-
-  for (const order of snapshotBucket) {
-    const data = await addProductDetailsToOrder({
-      ...order.data(),
-      id: order.id,
-    });
-    orders.push(data);
-  }
 
   res.json(orders);
 });
-
-const addProductDetailsToOrder = async (order) => {
-  const itemDetails = await getProductsDetails(order.items);
-  return {
-    ...order,
-    items: order.items.map((item) => {
-      return {
-        ...item,
-        title:
-          itemDetails.find((itemDetail) => item.productId === itemDetail.id)
-            .title ?? "",
-      };
-    }),
-  };
-};
 
 /**
  * Remove order

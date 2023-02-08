@@ -98,16 +98,15 @@
           <div class="w-full flex flex-col gap-4 mb-4">
             <div class="w-full">
               <label
-                for="street-address"
+                for="delivery-name"
                 class="block text-sm font-medium text-gray-700"
-                >Address</label
+                >Name</label
               >
               <input
                 type="text"
-                name="street-address"
-                id="street-address"
-                autocomplete="street-address"
-                v-model="formData.address"
+                name="name"
+                id="delivery-name"
+                v-model="formData.name"
                 class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm"
               />
             </div>
